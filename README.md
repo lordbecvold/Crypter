@@ -1,7 +1,5 @@
 # Java Crypter
 
-The base for bots who working with the JDA library.
-
 TODO:
 * Hash brute force
 * Own encrypt algorithm	
