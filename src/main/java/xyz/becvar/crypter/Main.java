@@ -20,6 +20,7 @@ public class Main {
         main.printMain();
     }
 
+
     public void printMain() {
 
         //Print menu
@@ -31,7 +32,7 @@ public class Main {
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "5)" + ConsoleColors.ANSI_GREEN + "MD4            " + ConsoleColors.ANSI_YELLOW + "6)" + ConsoleColors.ANSI_GREEN + "MD5");
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "7)" + ConsoleColors.ANSI_GREEN + "NTLM           " + ConsoleColors.ANSI_YELLOW + "8)" + ConsoleColors.ANSI_GREEN + "RIPEMD160");
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "9)" + ConsoleColors.ANSI_GREEN + "SHA1           " + ConsoleColors.ANSI_YELLOW + "10)" + ConsoleColors.ANSI_GREEN + "SHA256");
-        consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "11)" + ConsoleColors.ANSI_GREEN + "Whirlpool     ");
+        consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "11)" + ConsoleColors.ANSI_GREEN + "Whirlpool     " + ConsoleColors.ANSI_YELLOW + "12)" + ConsoleColors.ANSI_GREEN + "Base58");
         consoleUtils.printEmptySpacer();
 
         //Get user input and send to select function
@@ -40,11 +41,11 @@ public class Main {
 
         //Check if value is valid
         if (!BasicUtils.ifValueValid(algorithm)) {
+            consoleUtils.printEmptySpacer();
             selectAlgorithm(algorithm);
         } else {
             printInvalidMSG();
         }
-        consoleUtils.printEmptySpacer();
     }
 
 
@@ -81,6 +82,8 @@ public class Main {
             Hasher.sha256();
         } else if (algorithm.equals("11")) {
             Hasher.whirlpool();
+        } else if (algorithm.equals("12")) {
+            Hasher.base58();
         } else {
             printInvalidMSG();
         }
