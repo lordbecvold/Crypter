@@ -5,8 +5,7 @@ TODO:
 * Own encrypt algorithm	
 
 ## Dependencies
-This project requires Java 11. \
-All dependencies are managed automatically by maven.
+This project requires Java 11.
 * Jcifs
    * Version: **1.3.18.2**
    * [Website](https://www.codelibs.org/)
