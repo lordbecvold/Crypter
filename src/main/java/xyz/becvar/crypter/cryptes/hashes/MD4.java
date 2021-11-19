@@ -22,5 +22,4 @@ public class MD4 {
         crypt.update(string.getBytes(StandardCharsets.UTF_8));
         return Hex.toHexString(crypt.digest());
     }
-
 }

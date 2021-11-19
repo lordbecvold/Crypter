@@ -22,37 +22,20 @@ package xyz.becvar.crypter.cryptes.encryptions;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-/**
- * Base58 is a way to encode Bitcoin addresses (or arbitrary data) as alphanumeric strings.
- * <p>
- * Note that this is not the same base58 as used by Flickr, which you may find referenced around the Internet.
- * <p>
- * Satoshi explains: why base-58 instead of standard base-64 encoding?
- * <ul>
- * <li>Don't want 0OIl characters that look the same in some fonts and
- *     could be used to create visually identical looking account numbers.</li>
- * <li>A string with non-alphanumeric characters is not as easily accepted as an account number.</li>
- * <li>E-mail usually won't line-break if there's no punctuation to break at.</li>
- * <li>Doubleclicking selects the whole number as one word if it's all alphanumeric.</li>
- * </ul>
- * <p>
- * However, note that the encoding/decoding runs in O(n&sup2;) time, so it is not useful for large data.
- * <p>
- * The basic idea of the encoding is to treat the data bytes as a large number represented using
- * base-256 digits, convert the number to be represented using base-58 digits, preserve the exact
- * number of leading zeros (which are otherwise lost during the mathematical operations on the
- * numbers), and finally represent the resulting base-58 digits as alphanumeric ASCII characters.
- */
 public class BASE58 {
+
     public static final char[] ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz".toCharArray();
     private static final char ENCODED_ZERO = ALPHABET[0];
     private static final int[] INDEXES = new int[128];
+
     static {
         Arrays.fill(INDEXES, -1);
         for (int i = 0; i < ALPHABET.length; i++) {
             INDEXES[ALPHABET[i]] = i;
         }
     }
+
+
 
     /**
      * Encodes the given bytes as a base58 string (no checksum is appended).
@@ -89,6 +72,8 @@ public class BASE58 {
         // Return encoded string (including encoded leading zeros).
         return new String(encoded, outputStart, encoded.length - outputStart);
     }
+
+
 
     /**
      * Decodes the given base58 string into the original data bytes.
@@ -132,9 +117,13 @@ public class BASE58 {
         return Arrays.copyOfRange(decoded, outputStart - zeros, decoded.length);
     }
 
+
+
     public static BigInteger decodeToBigInteger(String input) {
         return new BigInteger(1, decode(input));
     }
+
+
 
     /**
      * Divides a number, represented as an array of bytes each containing a single digit

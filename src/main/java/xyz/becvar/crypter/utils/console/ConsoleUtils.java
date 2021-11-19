@@ -8,20 +8,28 @@ public class ConsoleUtils {
         System.out.flush();
     }
 
+
+
     //Print msg to console
     public void consoleLog(String msg) {
         System.out.println(msg);
     }
+
+
 
     //Print spacer
     public void printSpacer() {
         consoleLog(ConsoleColors.ANSI_BLUE + "====================================================================================");
     }
 
+
+
     //Print empty msg
     public void printEmptySpacer() {
         System.out.println(" ");
     }
+
+
 
     //Print long empty spacer
     public void printLongSpacer() {

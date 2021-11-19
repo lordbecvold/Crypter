@@ -3,6 +3,7 @@ package xyz.becvar.crypter;
 import xyz.becvar.crypter.cryptes.encryptions.AES;
 import xyz.becvar.crypter.cryptes.encryptions.BASE58;
 import xyz.becvar.crypter.cryptes.encryptions.BASE64;
+import xyz.becvar.crypter.cryptes.hashes.*;
 import xyz.becvar.crypter.utils.BasicUtils;
 import xyz.becvar.crypter.utils.console.ConsoleColors;
 import java.util.Scanner;
@@ -12,7 +13,6 @@ public class Hasher {
     public static Scanner scanner = new Scanner(System.in);
 
     public static void base64() {
-
         String processString = "1";
 
         //Print msg
@@ -63,8 +63,10 @@ public class Hasher {
         }
     }
 
-    public static void aes() {
 
+
+
+    public static void aes() {
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Select key");
         String key = scanner.nextLine();
 
@@ -119,44 +121,10 @@ public class Hasher {
                 BasicUtils.exitApp("Crypter exited...");
             }
         }
-
     }
 
-    public static void bcrypt() {
 
-    }
 
-    public static void crc16() {
-
-    }
-
-    public static void md4() {
-
-    }
-
-    public static void md5() {
-
-    }
-
-    public static void ntlm() {
-
-    }
-
-    public static void ripemd160() {
-
-    }
-
-    public static void sha1() {
-
-    }
-
-    public static void sha256() {
-
-    }
-
-    public static void whirlpool() {
-
-    }
 
     public static void base58() {
         String processString = "1";
@@ -206,6 +174,286 @@ public class Hasher {
         } else {
             System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
             BasicUtils.exitApp("Crypter exited...");
+        }
+    }
+
+
+
+
+    public static void bcrypt() {
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
+        String value = scanner.nextLine();
+
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type salt cost value");
+        String cost = scanner.nextLine();
+
+        if (value.isEmpty() || cost.isEmpty()) {
+            bcrypt();
+        } else {
+            if (BasicUtils.isInteger(cost)) {
+                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + BCryptHash.createBcrypt(value, Integer.parseInt(cost)));
+
+                //Print msg
+                System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
+
+                //Get ans
+                String ans = scanner.nextLine();
+
+                //make action by input
+                if (ans.equalsIgnoreCase("y")) {
+                    bcrypt();
+                } else if (ans.equalsIgnoreCase("n")) {
+                    BasicUtils.exitApp("Crypter exited...");
+                } else {
+                    System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
+                    BasicUtils.exitApp("Crypter exited...");
+                }
+            } else {
+                bcrypt();
+            }
+        }
+    }
+
+
+
+
+    public static void crc16() {
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
+        String value = scanner.nextLine();
+
+        if (!value.isEmpty()) {
+            Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + CRC16.generateCRC16(value));
+
+            //Print msg
+            System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
+
+            //Get ans
+            String ans = scanner.nextLine();
+
+            //make action by input
+            if (ans.equalsIgnoreCase("y")) {
+                crc16();
+            } else if (ans.equalsIgnoreCase("n")) {
+                BasicUtils.exitApp("Crypter exited...");
+            } else {
+                System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
+                BasicUtils.exitApp("Crypter exited...");
+            }
+        } else {
+            crc16();
+        }
+    }
+
+
+
+
+    public static void md4() {
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
+        String value = scanner.nextLine();
+
+        if (!value.isEmpty()) {
+            Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + MD4.createMD4(value));
+
+            //Print msg
+            System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
+
+            //Get ans
+            String ans = scanner.nextLine();
+
+            //make action by input
+            if (ans.equalsIgnoreCase("y")) {
+                md4();
+            } else if (ans.equalsIgnoreCase("n")) {
+                BasicUtils.exitApp("Crypter exited...");
+            } else {
+                System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
+                BasicUtils.exitApp("Crypter exited...");
+            }
+        } else {
+            md4();
+        }
+    }
+
+
+
+
+    public static void md5() {
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
+        String value = scanner.nextLine();
+
+        if (!value.isEmpty()) {
+            Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + MD5.createMD5(value));
+
+            //Print msg
+            System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
+
+            //Get ans
+            String ans = scanner.nextLine();
+
+            //make action by input
+            if (ans.equalsIgnoreCase("y")) {
+                md5();
+            } else if (ans.equalsIgnoreCase("n")) {
+                BasicUtils.exitApp("Crypter exited...");
+            } else {
+                System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
+                BasicUtils.exitApp("Crypter exited...");
+            }
+        } else {
+            md5();
+        }
+    }
+
+
+
+
+    public static void ntlm() {
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
+        String value = scanner.nextLine();
+
+        if (!value.isEmpty()) {
+            Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + NTLM.generateNTLM(value));
+
+            //Print msg
+            System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
+
+            //Get ans
+            String ans = scanner.nextLine();
+
+            //make action by input
+            if (ans.equalsIgnoreCase("y")) {
+                ntlm();
+            } else if (ans.equalsIgnoreCase("n")) {
+                BasicUtils.exitApp("Crypter exited...");
+            } else {
+                System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
+                BasicUtils.exitApp("Crypter exited...");
+            }
+        } else {
+            ntlm();
+        }
+    }
+
+
+
+
+    public static void ripemd160() {
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
+        String value = scanner.nextLine();
+
+        if (!value.isEmpty()) {
+            Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + RIPEMD160.generateRIPME160(value));
+
+            //Print msg
+            System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
+
+            //Get ans
+            String ans = scanner.nextLine();
+
+            //make action by input
+            if (ans.equalsIgnoreCase("y")) {
+                ripemd160();
+            } else if (ans.equalsIgnoreCase("n")) {
+                BasicUtils.exitApp("Crypter exited...");
+            } else {
+                System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
+                BasicUtils.exitApp("Crypter exited...");
+            }
+        } else {
+            ripemd160();
+        }
+    }
+
+
+
+
+    public static void sha1() {
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
+        String value = scanner.nextLine();
+
+        if (!value.isEmpty()) {
+            Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + SHA1.createSHA1(value));
+
+            //Print msg
+            System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
+
+            //Get ans
+            String ans = scanner.nextLine();
+
+            //make action by input
+            if (ans.equalsIgnoreCase("y")) {
+                sha1();
+            } else if (ans.equalsIgnoreCase("n")) {
+                BasicUtils.exitApp("Crypter exited...");
+            } else {
+                System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
+                BasicUtils.exitApp("Crypter exited...");
+            }
+        } else {
+            sha1();
+        }
+    }
+
+
+
+
+    public static void sha256() {
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
+        String value = scanner.nextLine();
+
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type salt value");
+        String salt = scanner.nextLine();
+
+        if (value.isEmpty() || salt.isEmpty()) {
+            sha256();
+        } else {
+            Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + SHA256.createSHA256(value, salt));
+
+            //Print msg
+            System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
+
+            //Get ans
+            String ans = scanner.nextLine();
+
+            //make action by input
+            if (ans.equalsIgnoreCase("y")) {
+                sha256();
+            } else if (ans.equalsIgnoreCase("n")) {
+                BasicUtils.exitApp("Crypter exited...");
+            } else {
+                System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
+                BasicUtils.exitApp("Crypter exited...");
+            }
+        }
+    }
+
+
+
+
+    public static void whirlpool() {
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
+        String value = scanner.nextLine();
+
+        if (!value.isEmpty()) {
+            Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + Whirlpool.createWhirlpool(value));
+
+            //Print msg
+            System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
+
+            //Get ans
+            String ans = scanner.nextLine();
+
+            //make action by input
+            if (ans.equalsIgnoreCase("y")) {
+                whirlpool();
+            } else if (ans.equalsIgnoreCase("n")) {
+                BasicUtils.exitApp("Crypter exited...");
+            } else {
+                System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
+                BasicUtils.exitApp("Crypter exited...");
+            }
+        } else {
+            whirlpool();
         }
     }
 }

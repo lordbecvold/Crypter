@@ -12,6 +12,7 @@ public class BASE64 {
     }
 
 
+
     //Function for decode string with base64
     public static String base64Decode(String string) {
         byte[] decodedBytes = Base64.getDecoder().decode(string.getBytes());

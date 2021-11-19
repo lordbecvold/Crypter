@@ -7,6 +7,8 @@ public class EncryptUtils {
 
     private final static char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
 
+
+
     //Move bytes to hex code
     public static String bytesToHex(byte[] bytes) {
         char[] hexChars = new char[bytes.length * 2];
@@ -17,6 +19,8 @@ public class EncryptUtils {
         }
         return new String(hexChars);
     }
+
+
 
     //Check if string encoded in base64
     public static boolean checkForEncodeBase64(String string) {

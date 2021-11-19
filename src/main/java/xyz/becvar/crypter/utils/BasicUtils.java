@@ -17,6 +17,8 @@ public class BasicUtils {
         return true;
     }
 
+
+
     //Check if value is valid (Algorithm select)
     public static boolean ifValueValid(String value) {
 
@@ -28,6 +30,8 @@ public class BasicUtils {
             return false;
         }
     }
+
+
 
     //Exit app with exit code
     public static void exitApp(String msg) {
