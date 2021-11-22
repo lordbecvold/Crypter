@@ -44,22 +44,40 @@ public class Cracker {
             
             if (algorithm.equalsIgnoreCase("1")) { //Bcrypt
 
+
+
             } else if (algorithm.equalsIgnoreCase("2")) { //CRC16
+
+
 
             } else if (algorithm.equalsIgnoreCase("3")) { //MD4
                 
+
+
             } else if (algorithm.equalsIgnoreCase("4")) { //MD5
                 
+
+
             } else if (algorithm.equalsIgnoreCase("5")) { //NTLM
                 
+
+
             } else if (algorithm.equalsIgnoreCase("6")) { //RIPEMD160
                 
+
+
             } else if (algorithm.equalsIgnoreCase("7")) { //SHA1
                 
+
+
             } else if (algorithm.equalsIgnoreCase("8")) { //SHA256
                 
+
+
             } else if (algorithm.equalsIgnoreCase("9")) { //Whirlpool
                 
+
+
             } else {
                 BasicUtils.exitApp("Error your vote not found");
             }
