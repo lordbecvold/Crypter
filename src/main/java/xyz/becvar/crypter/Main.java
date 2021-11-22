@@ -14,10 +14,12 @@ public class Main {
 
     public static void main(String[] args) {
         //Clear console after start app
-        consoleUtils.clearConsole();
+        //consoleUtils.clearConsole();
 
         //Print main "GUI"
-        main.printMain();
+        //main.printMain();
+
+        Cracker.init();
     }
 
 
@@ -34,6 +36,9 @@ public class Main {
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "9)" + ConsoleColors.ANSI_GREEN + "SHA1           " + ConsoleColors.ANSI_YELLOW + "10)" + ConsoleColors.ANSI_GREEN + "SHA256");
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "11)" + ConsoleColors.ANSI_GREEN + "Whirlpool     " + ConsoleColors.ANSI_YELLOW + "12)" + ConsoleColors.ANSI_GREEN + "Base58");
         consoleUtils.printEmptySpacer();
+        consoleUtils.printEmptySpacer();
+        consoleUtils.printEmptySpacer();
+        consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "0." + ConsoleColors.ANSI_GREEN + "Crack hash");
 
         //Get user input and send to select function
         System.out.print(ConsoleColors.ANSI_YELLOW + "type the number of the algorithm: ");
@@ -60,7 +65,9 @@ public class Main {
 
     //Set function by algorithm
     public void selectAlgorithm(String algorithm) {
-        if (algorithm.equals("1")) {
+        if (algorithm.equals("0")) {
+            Cracker.init();
+        } else if (algorithm.equals("1")) {
             Hasher.base64();
         } else if (algorithm.equals("2")) {
             Hasher.aes();
