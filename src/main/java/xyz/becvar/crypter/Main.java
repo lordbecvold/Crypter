@@ -14,12 +14,12 @@ public class Main {
 
     public static void main(String[] args) {
         //Clear console after start app
-        //consoleUtils.clearConsole();
+        consoleUtils.clearConsole();
 
         //Print main "GUI"
-        //main.printMain();
+        main.printMain();
 
-        crackerInit();
+        //crackerInit();
     }
 
 
@@ -103,50 +103,9 @@ public class Main {
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "1)" + ConsoleColors.ANSI_GREEN + "Brute-force     " + ConsoleColors.ANSI_YELLOW + "2)" + ConsoleColors.ANSI_GREEN + "Random");
         String process = scanner.nextLine();
 
-        if (process.equalsIgnoreCase("1")) {
-            //Print menu
-            consoleUtils.printEmptySpacer();
-            consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Brute-force is brute-force attack consists of an attacker submitting many passwords or passphrases with the hope of eventually guessing correctly.");
-            consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "1)" + ConsoleColors.ANSI_GREEN + "Bcrypt         " + ConsoleColors.ANSI_YELLOW + "2)" + ConsoleColors.ANSI_GREEN + "CRC16");
-            consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "3)" + ConsoleColors.ANSI_GREEN + "MD4            " + ConsoleColors.ANSI_YELLOW + "4)" + ConsoleColors.ANSI_GREEN + "MD5");
-            consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "5)" + ConsoleColors.ANSI_GREEN + "NTLM           " + ConsoleColors.ANSI_YELLOW + "6)" + ConsoleColors.ANSI_GREEN + "RIPEMD160");
-            consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "7)" + ConsoleColors.ANSI_GREEN + "SHA1           " + ConsoleColors.ANSI_YELLOW + "8)" + ConsoleColors.ANSI_GREEN + "SHA256");
-            consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "9)" + ConsoleColors.ANSI_GREEN + "Whirlpool");
-            consoleUtils.printEmptySpacer();
-
-            //Get user input and send to select function
-            System.out.print(ConsoleColors.ANSI_YELLOW + "type the number of the algorithm: ");
-            String algorithm = scanner.nextLine();
-
-            //Check if value is valid
-            if (!BasicUtils.ifValueValid(algorithm)) {
-                Main.consoleUtils.printEmptySpacer();
-
-                if (algorithm.equalsIgnoreCase("1")) { //Bcrypt
-                    Cracker.bruteForceBcrypt();
-                } else if (algorithm.equalsIgnoreCase("2")) { //CRC16
-                    Cracker.bruteForceCRC16();
-                } else if (algorithm.equalsIgnoreCase("3")) { //MD4
-                    Cracker.bruteForceMD4();
-                } else if (algorithm.equalsIgnoreCase("4")) { //MD5
-                    Cracker.bruteForceMD5();
-                } else if (algorithm.equalsIgnoreCase("5")) { //NTLM
-                    Cracker.bruteForceNTLM();
-                } else if (algorithm.equalsIgnoreCase("6")) { //RIPEMD160
-                    Cracker.bruteForceRIPEMD160();
-                } else if (algorithm.equalsIgnoreCase("7")) { //SHA1
-                    Cracker.bruteForceSHA1();
-                } else if (algorithm.equalsIgnoreCase("8")) { //SHA256
-                    Cracker.bruteForceSHA256();
-                } else if (algorithm.equalsIgnoreCase("9")) { //Whirlpool
-                    Cracker.bruteForceWhirlpool();
-                } else {
-                    BasicUtils.exitApp("Error your vote not found");
-                }
-            } else {
-                BasicUtils.exitApp("Error your vote is invalid");
-            }
-        } else if (process.equalsIgnoreCase("2")) {
+        if (process.equalsIgnoreCase("1")) { //Bruteforce from file wordlist
+            Cracker.bruteForceFromFile();
+        } else if (process.equalsIgnoreCase("2")) { //Random generate hash
             Cracker.randomGenerate();
         } else {
             BasicUtils.exitApp("Sorry process not found");
