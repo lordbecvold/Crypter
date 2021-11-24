@@ -1,5 +1,6 @@
 package xyz.becvar.crypter;
 
+import xyz.becvar.crypter.cryptes.hashes.*;
 import xyz.becvar.crypter.utils.BasicUtils;
 import xyz.becvar.crypter.utils.console.ConsoleColors;
 import xyz.becvar.crypter.utils.console.ConsoleUtils;
@@ -13,13 +14,15 @@ public class Main {
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        //Clear console after start app
-        consoleUtils.clearConsole();
+        if(args.length == 0) {
+            //Clear console after start app
+            consoleUtils.clearConsole();
 
-        //Print main "GUI"
-        main.printMain();
-
-        //crackerInit();
+            //Print main "GUI"
+            main.printMain();
+        } else {
+            argumentUsage(args);
+        }
     }
 
 
@@ -109,6 +112,61 @@ public class Main {
             Cracker.randomGenerate();
         } else {
             BasicUtils.exitApp("Sorry process not found");
+        }
+    }
+
+    public static void argumentUsage(String[] args) {
+
+        if (args[0].equalsIgnoreCase("help")) {
+            consoleUtils.consoleLog("Usage: java -jar crypter.jar [process] [string] [algorithm]");
+            consoleUtils.consoleLog("Example usage: java -jar crypter.jar hash test md5");
+
+        //Hash process
+        } else if (args[0].equalsIgnoreCase("hash")) {
+            if (args[1].isEmpty()) {
+                consoleUtils.consoleLog("Error text value is empty");
+            } else {
+                if (args[2].equalsIgnoreCase("bcrypt")) {
+                    if (args.length <= 3) {
+                        consoleUtils.consoleLog("Please type cost value for bcrypt");
+                        consoleUtils.consoleLog("Example usage: java -jar crypter.jar hash test bcrypt 10");
+                    } else {
+                        String hash = BCryptHash.createBcrypt(args[1], Integer.parseInt(args[3]));
+                        consoleUtils.consoleLog("Bcrypt hash from " + args[1] + " is " + hash);
+                    }
+                } else if (args[2].equalsIgnoreCase("crc16")) {
+                    String hash = CRC16.generateCRC16(args[1]);
+                    consoleUtils.consoleLog("CRC16 hash from " + args[1] + " is " + hash);
+                } else if (args[2].equalsIgnoreCase("md4")) {
+                    String hash = MD4.createMD4(args[1]);
+                    consoleUtils.consoleLog("MD4 hash from " + args[1] + " is " + hash);
+                }  else if (args[2].equalsIgnoreCase("md5")) {
+                    String hash = MD5.createMD5(args[1]);
+                    consoleUtils.consoleLog("MD5 hash from " + args[1] + " is " + hash);
+                } else if (args[2].equalsIgnoreCase("ntlm")) {
+                    String hash = NTLM.generateNTLM(args[1]);
+                    consoleUtils.consoleLog("NTLM hash from " + args[1] + " is " + hash);
+                } else if (args[2].equalsIgnoreCase("ripemd16")) {
+                    String hash = RIPEMD160.generateRIPME160(args[1]);
+                    consoleUtils.consoleLog("RIPEMD160 hash from " + args[1] + " is " + hash);
+                } else if (args[2].equalsIgnoreCase("sha1")) {
+                    String hash = SHA1.createSHA1(args[1]);
+                    consoleUtils.consoleLog("SHA1 hash from " + args[1] + " is " + hash);
+                } else if (args[2].equalsIgnoreCase("sha256")) {
+                    if (args.length <= 3) {
+                        consoleUtils.consoleLog("Please type salt value for sha256");
+                        consoleUtils.consoleLog("Example usage: java -jar crypter.jar hash test sha256 salt");
+                    } else {
+                        String hash = SHA256.createSHA256(args[1], args[3]);
+                        consoleUtils.consoleLog("SHA256 hash from " + args[1] + " is " + hash);
+                    }
+                } else if (args[2].equalsIgnoreCase("whirlpool")) {
+                    String hash = Whirlpool.createWhirlpool(args[1]);
+                    consoleUtils.consoleLog("Whirlpool hash from " + args[1] + " is " + hash);
+                } else {
+                    consoleUtils.consoleLog(args[2] + " not found list of algorithmes [bcrypt, crc16, md4, md5, ntlm, ripemd16, sha1, sha256, whirlpool]");
+                }
+            }
         }
     }
 }
