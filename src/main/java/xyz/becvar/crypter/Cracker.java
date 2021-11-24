@@ -11,6 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Cracker {
 
+    //Init def vars
     public static String filePath;
     public static String hashToCrack;
     public static String cost;
@@ -52,7 +53,6 @@ public class Cracker {
             if (!BasicUtils.ifValueValid(algorithm)) {
                 Main.consoleUtils.printEmptySpacer();
 
-
                 Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type hash to crack");
                 hashToCrack = Main.scanner.nextLine();
 
@@ -70,7 +70,6 @@ public class Cracker {
                         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type salt value");
                         salt = Main.scanner.nextLine();
                     }
-
 
                     try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
                         String line;

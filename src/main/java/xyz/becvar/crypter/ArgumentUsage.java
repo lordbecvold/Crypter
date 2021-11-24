@@ -1,6 +1,7 @@
 package xyz.becvar.crypter;
 
 import xyz.becvar.crypter.cryptes.encryptions.AES;
+import xyz.becvar.crypter.cryptes.encryptions.BASE58;
 import xyz.becvar.crypter.cryptes.encryptions.BASE64;
 import xyz.becvar.crypter.cryptes.hashes.*;
 
@@ -10,9 +11,9 @@ public class ArgumentUsage {
         if (args[0].equalsIgnoreCase("help")) {
             Main.consoleUtils.consoleLog("Usage: java -jar crypter.jar [process] [string] [algorithm]");
             Main.consoleUtils.consoleLog("Example usage: java -jar crypter.jar hash test md5");
-            Main.consoleUtils.consoleLog("List of algorithmes [base64, aes, bcrypt, crc16, md4, md5, ntlm, ripemd16, sha1, sha256, whirlpool]");
+            Main.consoleUtils.consoleLog("List of algorithmes [base64, base58, aes, bcrypt, crc16, md4, md5, ntlm, ripemd16, sha1, sha256, whirlpool]");
 
-            //Hash process
+        //hash process
         } else if (args[0].equalsIgnoreCase("hash")) {
             if (args[1].isEmpty()) {
                 Main.consoleUtils.consoleLog("Error text value is empty");
@@ -47,6 +48,28 @@ public class ArgumentUsage {
                         } else {
                             Main.consoleUtils.consoleLog("Please select methode encode or decode");
                             Main.consoleUtils.consoleLog("Example usage: java -jar crypter.jar hash text base64 encode/decode");
+                        }
+                    }
+
+                } else if (args[2].equalsIgnoreCase("base58")) {
+
+                    if (args.length <= 3) {
+                        Main.consoleUtils.consoleLog("Please select methode encode or decode");
+                        Main.consoleUtils.consoleLog("Example usage: java -jar crypter.jar hash text base58 encode/decode");
+                    } else {
+                        if (args[3].equalsIgnoreCase("encode")) {
+
+                            String hash = BASE58.encode(args[1].getBytes());
+                            Main.consoleUtils.consoleLog("Encoded string: " + hash);
+
+                        } else if (args[3].equalsIgnoreCase("decode")) {
+
+                            String hash = new String(BASE58.decode(args[1]));
+                            Main.consoleUtils.consoleLog("Decode string: " + hash);
+
+                        } else {
+                            Main.consoleUtils.consoleLog("Please select methode encode or decode");
+                            Main.consoleUtils.consoleLog("Example usage: java -jar crypter.jar hash text base58 encode/decode");
                         }
                     }
 
@@ -108,9 +131,11 @@ public class ArgumentUsage {
                     String hash = Whirlpool.createWhirlpool(args[1]);
                     Main.consoleUtils.consoleLog("Whirlpool hash from " + args[1] + " is " + hash);
                 } else {
-                    Main.consoleUtils.consoleLog(args[2] + " not found list of algorithmes [base64, aes, bcrypt, crc16, md4, md5, ntlm, ripemd16, sha1, sha256, whirlpool]");
+                    Main.consoleUtils.consoleLog(args[2] + " not found list of algorithmes [base64 base58, aes, bcrypt, crc16, md4, md5, ntlm, ripemd16, sha1, sha256, whirlpool]");
                 }
             }
+        } else {
+            Main.consoleUtils.consoleLog("Argument not found... type help");
         }
     }
 }

@@ -6,19 +6,20 @@ import xyz.becvar.crypter.cryptes.encryptions.BASE64;
 import xyz.becvar.crypter.cryptes.hashes.*;
 import xyz.becvar.crypter.utils.BasicUtils;
 import xyz.becvar.crypter.utils.console.ConsoleColors;
-import java.util.Scanner;
 
 public class Hasher {
 
-    public static Scanner scanner = new Scanner(System.in);
-
+    //Base64 encode or decode
     public static void base64() {
+
+        //Select default process value
         String processString = "1";
 
         //Print msg
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "1)" + ConsoleColors.ANSI_GREEN + "Encode     " + ConsoleColors.ANSI_YELLOW + "2)" + ConsoleColors.ANSI_GREEN + "Decode");
-        String process = scanner.nextLine();
+        String process = Main.scanner.nextLine();
 
+        //Selct process (Encode or decode)
         if (process.equalsIgnoreCase("1")) {
             processString = "1";
         } else if (process.equalsIgnoreCase("2")) {
@@ -31,7 +32,7 @@ public class Hasher {
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string...");
 
         //Get string input
-        String stringValue = scanner.nextLine();
+        String stringValue = Main.scanner.nextLine();
 
         //Check if string is empty
         if (stringValue.isEmpty()) {
@@ -50,7 +51,7 @@ public class Hasher {
         System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
 
         //Get ans
-        String ans = scanner.nextLine();
+        String ans = Main.scanner.nextLine();
 
         //make action by input
         if (ans.equalsIgnoreCase("y")) {
@@ -65,16 +66,21 @@ public class Hasher {
 
 
 
-
+    //AES encode or decode methode
     public static void aes() {
-        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Select key");
-        String key = scanner.nextLine();
 
+        //Select key from user
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Select key");
+        String key = Main.scanner.nextLine();
+
+        //Select default process value
         String processString = "1";
 
+        //Print msg
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "1)" + ConsoleColors.ANSI_GREEN + "Encode     " + ConsoleColors.ANSI_YELLOW + "2)" + ConsoleColors.ANSI_GREEN + "Decode");
-        String process = scanner.nextLine();
+        String process = Main.scanner.nextLine();
 
+        //Select encode or decode methode
         if (process.equalsIgnoreCase("1")) {
             processString = "1";
         } else if (process.equalsIgnoreCase("2")) {
@@ -83,14 +89,16 @@ public class Hasher {
             aes();
         }
 
+        //Check if key is valid
         if (key.isEmpty()) {
             aes();
         } else {
+
             //Print msg
             Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string...");
 
             //Get string input
-            String stringValue = scanner.nextLine();
+            String stringValue = Main.scanner.nextLine();
 
             //Check if string is empty
             if (stringValue.isEmpty()) {
@@ -109,7 +117,7 @@ public class Hasher {
             System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
 
             //Get ans
-            String ans = scanner.nextLine();
+            String ans = Main.scanner.nextLine();
 
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
@@ -125,14 +133,17 @@ public class Hasher {
 
 
 
-
+    //Base58 encryption methode
     public static void base58() {
+
+        //Set default process
         String processString = "1";
 
         //Print msg
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "1)" + ConsoleColors.ANSI_GREEN + "Encode     " + ConsoleColors.ANSI_YELLOW + "2)" + ConsoleColors.ANSI_GREEN + "Decode");
-        String process = scanner.nextLine();
+        String process = Main.scanner.nextLine();
 
+        //Select encode or decode methode
         if (process.equalsIgnoreCase("1")) {
             processString = "1";
         } else if (process.equalsIgnoreCase("2")) {
@@ -145,7 +156,7 @@ public class Hasher {
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string...");
 
         //Get string input
-        String stringValue = scanner.nextLine();
+        String stringValue = Main.scanner.nextLine();
 
         //Check if string is empty
         if (stringValue.isEmpty()) {
@@ -164,7 +175,7 @@ public class Hasher {
         System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
 
         //Get ans
-        String ans = scanner.nextLine();
+        String ans = Main.scanner.nextLine();
 
         //make action by input
         if (ans.equalsIgnoreCase("y")) {
@@ -179,13 +190,13 @@ public class Hasher {
 
 
 
-
+    //Hash Bcrypt
     public static void bcrypt() {
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
-        String value = scanner.nextLine();
+        String value = Main.scanner.nextLine();
 
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type salt cost value");
-        String cost = scanner.nextLine();
+        String cost = Main.scanner.nextLine();
 
         if (value.isEmpty() || cost.isEmpty()) {
             bcrypt();
@@ -197,7 +208,7 @@ public class Hasher {
                 System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
 
                 //Get ans
-                String ans = scanner.nextLine();
+                String ans = Main.scanner.nextLine();
 
                 //make action by input
                 if (ans.equalsIgnoreCase("y")) {
@@ -216,10 +227,10 @@ public class Hasher {
 
 
 
-
+    //Hash crc16
     public static void crc16() {
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
-        String value = scanner.nextLine();
+        String value = Main.scanner.nextLine();
 
         if (!value.isEmpty()) {
             Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + CRC16.generateCRC16(value));
@@ -228,7 +239,7 @@ public class Hasher {
             System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
 
             //Get ans
-            String ans = scanner.nextLine();
+            String ans = Main.scanner.nextLine();
 
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
@@ -246,10 +257,10 @@ public class Hasher {
 
 
 
-
+    //Hash md4
     public static void md4() {
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
-        String value = scanner.nextLine();
+        String value = Main.scanner.nextLine();
 
         if (!value.isEmpty()) {
             Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + MD4.createMD4(value));
@@ -258,7 +269,7 @@ public class Hasher {
             System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
 
             //Get ans
-            String ans = scanner.nextLine();
+            String ans = Main.scanner.nextLine();
 
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
@@ -276,10 +287,10 @@ public class Hasher {
 
 
 
-
+    //Hash md5
     public static void md5() {
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
-        String value = scanner.nextLine();
+        String value = Main.scanner.nextLine();
 
         if (!value.isEmpty()) {
             Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + MD5.createMD5(value));
@@ -288,7 +299,7 @@ public class Hasher {
             System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
 
             //Get ans
-            String ans = scanner.nextLine();
+            String ans = Main.scanner.nextLine();
 
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
@@ -306,10 +317,10 @@ public class Hasher {
 
 
 
-
+    //Hash NTLM
     public static void ntlm() {
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
-        String value = scanner.nextLine();
+        String value = Main.scanner.nextLine();
 
         if (!value.isEmpty()) {
             Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + NTLM.generateNTLM(value));
@@ -318,7 +329,7 @@ public class Hasher {
             System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
 
             //Get ans
-            String ans = scanner.nextLine();
+            String ans = Main.scanner.nextLine();
 
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
@@ -336,10 +347,10 @@ public class Hasher {
 
 
 
-
+    //Hash RIPE Message Digest
     public static void ripemd160() {
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
-        String value = scanner.nextLine();
+        String value = Main.scanner.nextLine();
 
         if (!value.isEmpty()) {
             Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + RIPEMD160.generateRIPME160(value));
@@ -348,7 +359,7 @@ public class Hasher {
             System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
 
             //Get ans
-            String ans = scanner.nextLine();
+            String ans = Main.scanner.nextLine();
 
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
@@ -366,10 +377,10 @@ public class Hasher {
 
 
 
-
+    //Hash sha1
     public static void sha1() {
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
-        String value = scanner.nextLine();
+        String value = Main.scanner.nextLine();
 
         if (!value.isEmpty()) {
             Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + SHA1.createSHA1(value));
@@ -378,7 +389,7 @@ public class Hasher {
             System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
 
             //Get ans
-            String ans = scanner.nextLine();
+            String ans = Main.scanner.nextLine();
 
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
@@ -396,13 +407,13 @@ public class Hasher {
 
 
 
-
+    //Hash sha256
     public static void sha256() {
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
-        String value = scanner.nextLine();
+        String value = Main.scanner.nextLine();
 
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type salt value");
-        String salt = scanner.nextLine();
+        String salt = Main.scanner.nextLine();
 
         if (value.isEmpty() || salt.isEmpty()) {
             sha256();
@@ -413,7 +424,7 @@ public class Hasher {
             System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
 
             //Get ans
-            String ans = scanner.nextLine();
+            String ans = Main.scanner.nextLine();
 
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
@@ -429,10 +440,10 @@ public class Hasher {
 
 
 
-
+    //Hash Whirlpool
     public static void whirlpool() {
         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string to hash");
-        String value = scanner.nextLine();
+        String value = Main.scanner.nextLine();
 
         if (!value.isEmpty()) {
             Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + Whirlpool.createWhirlpool(value));
@@ -441,7 +452,7 @@ public class Hasher {
             System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
 
             //Get ans
-            String ans = scanner.nextLine();
+            String ans = Main.scanner.nextLine();
 
             //make action by input
             if (ans.equalsIgnoreCase("y")) {

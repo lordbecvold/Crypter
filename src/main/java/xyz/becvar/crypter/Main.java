@@ -1,9 +1,5 @@
 package xyz.becvar.crypter;
 
-import jcifs.util.Base64;
-import xyz.becvar.crypter.cryptes.encryptions.AES;
-import xyz.becvar.crypter.cryptes.encryptions.BASE64;
-import xyz.becvar.crypter.cryptes.hashes.*;
 import xyz.becvar.crypter.utils.BasicUtils;
 import xyz.becvar.crypter.utils.console.ConsoleColors;
 import xyz.becvar.crypter.utils.console.ConsoleUtils;
@@ -17,6 +13,8 @@ public class Main {
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+
+        //Check if user put argumnts
         if(args.length == 0) {
             //Clear console after start app
             consoleUtils.clearConsole();

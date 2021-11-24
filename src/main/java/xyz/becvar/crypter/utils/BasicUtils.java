@@ -1,7 +1,6 @@
 package xyz.becvar.crypter.utils;
 
 import xyz.becvar.crypter.utils.console.ConsoleColors;
-
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -69,6 +68,5 @@ public class BasicUtils {
         }
         String saltStr = salt.toString();
         return saltStr;
-
     }
 }

@@ -1,7 +1,6 @@
 # Java Crypter
 
 TODO:
-* Hash brute force
 * Own encrypt algorithm	
 
 ## Dependencies
