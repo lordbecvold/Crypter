@@ -113,7 +113,7 @@ public class ArgumentUsage {
                 } else if (args[2].equalsIgnoreCase("ntlm")) {
                     String hash = NTLM.generateNTLM(args[1]);
                     Main.consoleUtils.consoleLog("NTLM hash from " + args[1] + " is " + hash);
-                } else if (args[2].equalsIgnoreCase("ripemd16")) {
+                } else if (args[2].equalsIgnoreCase("ripemd160")) {
                     String hash = RIPEMD160.generateRIPME160(args[1]);
                     Main.consoleUtils.consoleLog("RIPEMD160 hash from " + args[1] + " is " + hash);
                 } else if (args[2].equalsIgnoreCase("sha1")) {
