@@ -13,7 +13,7 @@
 
     <groupId>xyz.becvar.crypter</groupId>
     <artifactId>Crypter</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
     <packaging>jar</packaging>
 
     <build>

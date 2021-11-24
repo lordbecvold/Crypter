@@ -7,6 +7,7 @@ import xyz.becvar.crypter.utils.console.ConsoleColors;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Cracker {
 
@@ -14,6 +15,7 @@ public class Cracker {
     public static String hashToCrack;
     public static String cost;
     public static String salt;
+    public static boolean canCrack = true;
 
     public static void bruteForceFromFile() {
 
@@ -144,6 +146,168 @@ public class Cracker {
 
     public static void randomGenerate() {
 
-    }
+        Main.consoleUtils.printEmptySpacer();
 
+        System.out.print(ConsoleColors.ANSI_GREEN + "Please type your hash to crack: ");
+        hashToCrack = Main.scanner.nextLine();
+
+        if (hashToCrack.isEmpty()) {
+            BasicUtils.exitApp("Hash value is empty!");
+        }
+
+        Main.consoleUtils.printEmptySpacer();
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Please select algorithm");
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "1)" + ConsoleColors.ANSI_GREEN + "Bcrypt         " + ConsoleColors.ANSI_YELLOW + "2)" + ConsoleColors.ANSI_GREEN + "CRC16");
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "3)" + ConsoleColors.ANSI_GREEN + "MD4            " + ConsoleColors.ANSI_YELLOW + "4)" + ConsoleColors.ANSI_GREEN + "MD5");
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "5)" + ConsoleColors.ANSI_GREEN + "NTLM           " + ConsoleColors.ANSI_YELLOW + "6)" + ConsoleColors.ANSI_GREEN + "RIPEMD160");
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "7)" + ConsoleColors.ANSI_GREEN + "SHA1           " + ConsoleColors.ANSI_YELLOW + "8)" + ConsoleColors.ANSI_GREEN + "SHA256");
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "9)" + ConsoleColors.ANSI_GREEN + "Whirlpool");
+        Main.consoleUtils.printEmptySpacer();
+
+        //Get user input and send to select function
+        System.out.print(ConsoleColors.ANSI_YELLOW + "type the number of the algorithm: ");
+        String algorithm = Main.scanner.nextLine();
+
+        if (!BasicUtils.ifValueValid(algorithm)) {
+
+            if (algorithm.equalsIgnoreCase("1")) {
+
+                while (canCrack) {
+
+                    int cost = ThreadLocalRandom.current().nextInt(5, 20);
+
+                    String random = BasicUtils.genrateString();
+
+                    String hash = BCryptHash.createBcrypt(random, cost);
+
+                    Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + random + ":" + ConsoleColors.ANSI_YELLOW + "BCrypt -> " + ConsoleColors.ANSI_GREEN + hash);
+
+                    if (hashToCrack.equalsIgnoreCase(hash)) {
+                        canCrack = false;
+                        BasicUtils.exitApp(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                    }
+                }
+
+            } else if (algorithm.equalsIgnoreCase("2")) {
+
+                String random = BasicUtils.genrateString();
+
+                String hash = CRC16.generateCRC16(random);
+
+                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + random + ":" + ConsoleColors.ANSI_YELLOW + "CRC16 -> " + ConsoleColors.ANSI_GREEN + hash);
+
+                if (hashToCrack.equalsIgnoreCase(hash)) {
+                    canCrack = false;
+                    BasicUtils.exitApp(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                }
+
+            } else if (algorithm.equalsIgnoreCase("3")) {
+
+                String random = BasicUtils.genrateString();
+
+                String hash = MD4.createMD4(random);
+
+                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + random + ":" + ConsoleColors.ANSI_YELLOW + "MD4 -> " + ConsoleColors.ANSI_GREEN + hash);
+
+                if (hashToCrack.equalsIgnoreCase(hash)) {
+                    canCrack = false;
+                    BasicUtils.exitApp(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                }
+            } else if (algorithm.equalsIgnoreCase("4")) {
+
+                while (canCrack) {
+                    String random = BasicUtils.genrateString();
+
+                    String hash = MD5.createMD5(random);
+
+                    Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + random + ":" + ConsoleColors.ANSI_YELLOW + "MD5 -> " + ConsoleColors.ANSI_GREEN + hash);
+
+                    if (hashToCrack.equalsIgnoreCase(hash)) {
+                        canCrack = false;
+                        BasicUtils.exitApp(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                    }
+                }
+
+            } else if (algorithm.equalsIgnoreCase("5")) {
+
+                while (canCrack) {
+                    String random = BasicUtils.genrateString();
+
+                    String hash = NTLM.generateNTLM(random);
+
+                    Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + random + ":" + ConsoleColors.ANSI_YELLOW + "NTLM -> " + ConsoleColors.ANSI_GREEN + hash);
+
+                    if (hashToCrack.equalsIgnoreCase(hash)) {
+                        canCrack = false;
+                        BasicUtils.exitApp(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                    }
+                }
+
+            } else if (algorithm.equalsIgnoreCase("6")) {
+
+                while (canCrack) {
+                    String random = BasicUtils.genrateString();
+
+                    String hash = RIPEMD160.generateRIPME160(random);
+
+                    Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + random + ":" + ConsoleColors.ANSI_YELLOW + "RIPEMD160 -> " + ConsoleColors.ANSI_GREEN + hash);
+
+                    if (hashToCrack.equalsIgnoreCase(hash)) {
+                        canCrack = false;
+                        BasicUtils.exitApp(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                    }
+                }
+
+            } else if (algorithm.equalsIgnoreCase("7")) {
+
+                while (canCrack) {
+                    String random = BasicUtils.genrateString();
+
+                    String hash = SHA1.createSHA1(random);
+
+                    Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + random + ":" + ConsoleColors.ANSI_YELLOW + "SHA1 -> " + ConsoleColors.ANSI_GREEN + hash);
+
+                    if (hashToCrack.equalsIgnoreCase(hash)) {
+                        canCrack = false;
+                        BasicUtils.exitApp(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                    }
+                }
+
+            } else if (algorithm.equalsIgnoreCase("8")) {
+
+                while (canCrack) {
+                    String random = BasicUtils.genrateString();
+                    String randomSalt = BasicUtils.genrateSalt();
+
+                    String hash = SHA256.createSHA256(random, randomSalt);
+
+                    Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + random + ":" + ConsoleColors.ANSI_YELLOW + "SHA256 -> " + ConsoleColors.ANSI_GREEN + hash);
+
+                    if (hashToCrack.equalsIgnoreCase(hash)) {
+                        canCrack = false;
+                        BasicUtils.exitApp(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                    }
+                }
+
+            } else if (algorithm.equalsIgnoreCase("9")) {
+
+                while (canCrack) {
+                    String random = BasicUtils.genrateString();
+
+                    String hash = Whirlpool.createWhirlpool(random);
+
+                    Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + random + ":" + ConsoleColors.ANSI_YELLOW + "Whirlpool -> " + ConsoleColors.ANSI_GREEN + hash);
+
+                    if (hashToCrack.equalsIgnoreCase(hash)) {
+                        canCrack = false;
+                        BasicUtils.exitApp(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                    }
+                }
+            }
+        } else {
+            BasicUtils.exitApp("Error your vote not found");
+        }
+    }
 }
+
+
