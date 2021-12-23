@@ -467,4 +467,63 @@ public class Hasher {
             whirlpool();
         }
     }
+
+
+
+    //becvoldCrypt encryption methode
+    public static void becvoldCrypt() {
+
+        //Set default process
+        String processString = "1";
+
+        //Print msg
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "1)" + ConsoleColors.ANSI_GREEN + "Encode     " + ConsoleColors.ANSI_YELLOW + "2)" + ConsoleColors.ANSI_GREEN + "Decode");
+        String process = Main.scanner.nextLine();
+
+        //Select encode or decode methode
+        if (process.equalsIgnoreCase("1")) {
+            processString = "1";
+        } else if (process.equalsIgnoreCase("2")) {
+            processString = "2";
+        } else {
+            becvoldCrypt();
+        }
+
+        //Print msg
+        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string...");
+
+        //Get string input
+        String stringValue = Main.scanner.nextLine();
+
+        //Check if string is empty
+        if (stringValue.isEmpty()) {
+            Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Error your string is empty");
+            becvoldCrypt();
+        }
+
+        //Encode and decode string1
+        if (processString.equalsIgnoreCase("1")) {
+            Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Encoded string: " + Main.becvoldCrypt.encrypt(stringValue));
+            System.out.println(stringValue);
+        } else if (processString.equalsIgnoreCase("2")) {
+            Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Decoded string: " + Main.becvoldCrypt.decrypt(stringValue));
+            System.out.println(stringValue);
+        }
+
+        //Print msg
+        System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
+
+        //Get ans
+        String ans = Main.scanner.nextLine();
+
+        //make action by input
+        if (ans.equalsIgnoreCase("y")) {
+            becvoldCrypt();
+        } else if (ans.equalsIgnoreCase("n")) {
+            BasicUtils.exitApp("Crypter exited...");
+        } else {
+            System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
+            BasicUtils.exitApp("Crypter exited...");
+        }
+    }
 }

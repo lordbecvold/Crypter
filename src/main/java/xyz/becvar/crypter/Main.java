@@ -1,5 +1,6 @@
 package xyz.becvar.crypter;
 
+import xyz.becvar.crypter.cryptes.encryptions.BecvoldCrypt;
 import xyz.becvar.crypter.utils.BasicUtils;
 import xyz.becvar.crypter.utils.console.ConsoleColors;
 import xyz.becvar.crypter.utils.console.ConsoleUtils;
@@ -11,6 +12,9 @@ public class Main {
     public static ConsoleUtils consoleUtils = new ConsoleUtils();
     public static Main main = new Main();
     public static Scanner scanner = new Scanner(System.in);
+
+
+    public static BecvoldCrypt becvoldCrypt = new BecvoldCrypt();
 
     public static void main(String[] args) {
 
@@ -39,6 +43,7 @@ public class Main {
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "7)" + ConsoleColors.ANSI_GREEN + "NTLM           " + ConsoleColors.ANSI_YELLOW + "8)" + ConsoleColors.ANSI_GREEN + "RIPEMD160");
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "9)" + ConsoleColors.ANSI_GREEN + "SHA1           " + ConsoleColors.ANSI_YELLOW + "10)" + ConsoleColors.ANSI_GREEN + "SHA256");
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "11)" + ConsoleColors.ANSI_GREEN + "Whirlpool     " + ConsoleColors.ANSI_YELLOW + "12)" + ConsoleColors.ANSI_GREEN + "Base58");
+        consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "13)" + ConsoleColors.ANSI_GREEN + "BecvoldCrypt  " + ConsoleColors.ANSI_YELLOW);
         consoleUtils.printEmptySpacer();
         consoleUtils.printEmptySpacer();
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "0." + ConsoleColors.ANSI_GREEN + "Crack hash");
@@ -94,6 +99,8 @@ public class Main {
             Hasher.whirlpool();
         } else if (algorithm.equals("12")) { //Base58
             Hasher.base58();
+        } else if (algorithm.equals("13")) { //BecvoldCrypt
+            Hasher.becvoldCrypt();
         } else {
             printInvalidMSG();
         }

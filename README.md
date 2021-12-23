@@ -1,8 +1,5 @@
 # Java Crypter
 
-TODO:
-* Own encrypt algorithm	
-
 ## Dependencies
 This project requires Java 11.
 * Jcifs

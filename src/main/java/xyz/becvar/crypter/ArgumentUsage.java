@@ -11,7 +11,7 @@ public class ArgumentUsage {
         if (args[0].equalsIgnoreCase("help")) {
             Main.consoleUtils.consoleLog("Usage: java -jar crypter.jar [process] [string] [algorithm]");
             Main.consoleUtils.consoleLog("Example usage: java -jar crypter.jar hash test md5");
-            Main.consoleUtils.consoleLog("List of algorithmes [base64, base58, aes, bcrypt, crc16, md4, md5, ntlm, ripemd16, sha1, sha256, whirlpool]");
+            Main.consoleUtils.consoleLog("List of algorithmes [base64, base58, aes, bcrypt, crc16, md4, md5, ntlm, ripemd16, sha1, sha256, whirlpool, becvoldCrypt]");
 
         //hash process
         } else if (args[0].equalsIgnoreCase("hash")) {
@@ -48,6 +48,28 @@ public class ArgumentUsage {
                         } else {
                             Main.consoleUtils.consoleLog("Please select methode encode or decode");
                             Main.consoleUtils.consoleLog("Example usage: java -jar crypter.jar hash text base64 encode/decode");
+                        }
+                    }
+
+                } else if (args[2].equalsIgnoreCase("becvoldCrypt")) {
+
+                    if (args.length <= 3) {
+                        Main.consoleUtils.consoleLog("Please select methode encode or decode");
+                        Main.consoleUtils.consoleLog("Example usage: java -jar crypter.jar hash text becvoldCrypt encode/decode");
+                    } else {
+                        if (args[3].equalsIgnoreCase("encode")) {
+
+                            String hash = Main.becvoldCrypt.encrypt(args[1]);
+                            Main.consoleUtils.consoleLog("Encoded string: " + hash);
+
+                        } else if (args[3].equalsIgnoreCase("decode")) {
+
+                            String hash = Main.becvoldCrypt.decrypt(args[1]);
+                            Main.consoleUtils.consoleLog("Decode string: " + hash);
+
+                        } else {
+                            Main.consoleUtils.consoleLog("Please select methode encode or decode");
+                            Main.consoleUtils.consoleLog("Example usage: java -jar crypter.jar hash text becvoldCrypt encode/decode");
                         }
                     }
 
