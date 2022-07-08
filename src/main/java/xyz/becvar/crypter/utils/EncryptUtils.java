@@ -27,6 +27,7 @@ public class EncryptUtils {
         Matcher m = r.matcher(string);
         if (m.find()) {
             return true;
+
         } else {
             return false;
         }

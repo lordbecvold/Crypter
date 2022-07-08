@@ -1,6 +1,5 @@
 package xyz.becvar.crypter;
 
-import xyz.becvar.crypter.cryptes.encryptions.BecvoldCrypt;
 import xyz.becvar.crypter.utils.BasicUtils;
 import xyz.becvar.crypter.utils.console.ConsoleColors;
 import xyz.becvar.crypter.utils.console.ConsoleUtils;
@@ -13,21 +12,12 @@ public class Main {
     public static Main main = new Main();
     public static Scanner scanner = new Scanner(System.in);
 
-
-    public static BecvoldCrypt becvoldCrypt = new BecvoldCrypt();
-
     public static void main(String[] args) {
+        //Clear console after start app
+        consoleUtils.clearConsole();
 
-        //Check if user put argumnts
-        if(args.length == 0) {
-            //Clear console after start app
-            consoleUtils.clearConsole();
-
-            //Print main "GUI"
-            main.printMain();
-        } else {
-            ArgumentUsage.init(args);
-        }
+        //Print main "GUI"
+        main.printMain();
     }
 
 
@@ -43,7 +33,6 @@ public class Main {
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "7)" + ConsoleColors.ANSI_GREEN + "NTLM           " + ConsoleColors.ANSI_YELLOW + "8)" + ConsoleColors.ANSI_GREEN + "RIPEMD160");
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "9)" + ConsoleColors.ANSI_GREEN + "SHA1           " + ConsoleColors.ANSI_YELLOW + "10)" + ConsoleColors.ANSI_GREEN + "SHA256");
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "11)" + ConsoleColors.ANSI_GREEN + "Whirlpool     " + ConsoleColors.ANSI_YELLOW + "12)" + ConsoleColors.ANSI_GREEN + "Base58");
-        consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "13)" + ConsoleColors.ANSI_GREEN + "BecvoldCrypt  " + ConsoleColors.ANSI_YELLOW);
         consoleUtils.printEmptySpacer();
         consoleUtils.printEmptySpacer();
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "0." + ConsoleColors.ANSI_GREEN + "Crack hash");
@@ -75,32 +64,43 @@ public class Main {
     public void selectAlgorithm(String algorithm) {
         if (algorithm.equals("0")) { //Open cracker gui
             crackerInit();
+
         } else if (algorithm.equals("1")) { //Base64
             Hasher.base64();
+
         } else if (algorithm.equals("2")) { //AES
             Hasher.aes();
+
         }else if (algorithm.equals("3")) { //Bcrypt
             Hasher.bcrypt();
+
         } else if (algorithm.equals("4")) { //CRC16
             Hasher.crc16();
+
         } else if (algorithm.equals("5")) { //MD4
             Hasher.md4();
+
         } else if (algorithm.equals("6")) { //MD5
             Hasher.md5();
+
         } else if (algorithm.equals("7")) { //NTLM
             Hasher.ntlm();
+
         } else if (algorithm.equals("8")) { //RIPEMD160
             Hasher.ripemd160();
+
         } else if (algorithm.equals("9")) { //SHA1
             Hasher.sha1();
+
         } else if (algorithm.equals("10")) { //SHA256
             Hasher.sha256();
+
         } else if (algorithm.equals("11")) { //Whirlpool
             Hasher.whirlpool();
+
         } else if (algorithm.equals("12")) { //Base58
             Hasher.base58();
-        } else if (algorithm.equals("13")) { //BecvoldCrypt
-            Hasher.becvoldCrypt();
+
         } else {
             printInvalidMSG();
         }
@@ -116,8 +116,10 @@ public class Main {
 
         if (process.equalsIgnoreCase("1")) { //Bruteforce from file wordlist
             Cracker.bruteForceFromFile();
+
         } else if (process.equalsIgnoreCase("2")) { //Random generate hash
             Cracker.randomGenerate();
+
         } else {
             BasicUtils.exitApp("Sorry process not found");
         }

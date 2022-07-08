@@ -10,9 +10,8 @@ public class BasicUtils {
     public static boolean isInteger(String s) {
         try {
             Integer.parseInt(s);
-        } catch(NumberFormatException e) {
-            return false;
-        } catch(NullPointerException e) {
+
+        } catch(NumberFormatException | NullPointerException e) {
             return false;
         }
         //only got here if we didn't return false
@@ -26,8 +25,10 @@ public class BasicUtils {
 
         if (value.isEmpty()) {
             return true;
+
         } else if (!isInteger(value)) {
             return true;
+
         } else {
             return false;
         }

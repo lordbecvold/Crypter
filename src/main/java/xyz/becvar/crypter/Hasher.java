@@ -22,8 +22,10 @@ public class Hasher {
         //Selct process (Encode or decode)
         if (process.equalsIgnoreCase("1")) {
             processString = "1";
+
         } else if (process.equalsIgnoreCase("2")) {
             processString = "2";
+
         } else {
             base64();
         }
@@ -43,6 +45,7 @@ public class Hasher {
         //Encode and decode string1
         if (processString.equalsIgnoreCase("1")) {
             Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Encoded string: " + BASE64.base64Encode(stringValue));
+
         } else if (processString.equalsIgnoreCase("2")) {
             Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Decoded string: " + BASE64.base64Decode(stringValue));
         }
@@ -56,8 +59,10 @@ public class Hasher {
         //make action by input
         if (ans.equalsIgnoreCase("y")) {
             base64();
+
         } else if (ans.equalsIgnoreCase("n")) {
             BasicUtils.exitApp("Crypter exited...");
+
         } else {
             System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
             BasicUtils.exitApp("Crypter exited...");
@@ -83,8 +88,10 @@ public class Hasher {
         //Select encode or decode methode
         if (process.equalsIgnoreCase("1")) {
             processString = "1";
+
         } else if (process.equalsIgnoreCase("2")) {
             processString = "2";
+
         } else {
             aes();
         }
@@ -92,6 +99,7 @@ public class Hasher {
         //Check if key is valid
         if (key.isEmpty()) {
             aes();
+
         } else {
 
             //Print msg
@@ -109,6 +117,7 @@ public class Hasher {
             //Encode and decode string1
             if (processString.equalsIgnoreCase("1")) {
                 Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Encoded string: " + AES.encryptAES(stringValue, key));
+
             } else if (processString.equalsIgnoreCase("2")) {
                 Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Decoded string: " + AES.decryptAES(stringValue, key));
             }
@@ -122,8 +131,10 @@ public class Hasher {
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
                 aes();
+
             } else if (ans.equalsIgnoreCase("n")) {
                 BasicUtils.exitApp("Crypter exited...");
+
             } else {
                 System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
                 BasicUtils.exitApp("Crypter exited...");
@@ -146,8 +157,10 @@ public class Hasher {
         //Select encode or decode methode
         if (process.equalsIgnoreCase("1")) {
             processString = "1";
+
         } else if (process.equalsIgnoreCase("2")) {
             processString = "2";
+
         } else {
             base58();
         }
@@ -167,6 +180,7 @@ public class Hasher {
         //Encode and decode string1
         if (processString.equalsIgnoreCase("1")) {
             Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Encoded string: " + BASE58.encode(stringValue.getBytes()));
+
         } else if (processString.equalsIgnoreCase("2")) {
             Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Decoded string: " + new String(BASE58.decode(stringValue)));
         }
@@ -180,8 +194,10 @@ public class Hasher {
         //make action by input
         if (ans.equalsIgnoreCase("y")) {
             base58();
+
         } else if (ans.equalsIgnoreCase("n")) {
             BasicUtils.exitApp("Crypter exited...");
+
         } else {
             System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
             BasicUtils.exitApp("Crypter exited...");
@@ -200,6 +216,7 @@ public class Hasher {
 
         if (value.isEmpty() || cost.isEmpty()) {
             bcrypt();
+
         } else {
             if (BasicUtils.isInteger(cost)) {
                 Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + BCryptHash.createBcrypt(value, Integer.parseInt(cost)));
@@ -213,12 +230,15 @@ public class Hasher {
                 //make action by input
                 if (ans.equalsIgnoreCase("y")) {
                     bcrypt();
+
                 } else if (ans.equalsIgnoreCase("n")) {
                     BasicUtils.exitApp("Crypter exited...");
+
                 } else {
                     System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
                     BasicUtils.exitApp("Crypter exited...");
                 }
+
             } else {
                 bcrypt();
             }
@@ -244,12 +264,15 @@ public class Hasher {
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
                 crc16();
+
             } else if (ans.equalsIgnoreCase("n")) {
                 BasicUtils.exitApp("Crypter exited...");
+
             } else {
                 System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
                 BasicUtils.exitApp("Crypter exited...");
             }
+
         } else {
             crc16();
         }
@@ -274,12 +297,15 @@ public class Hasher {
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
                 md4();
+
             } else if (ans.equalsIgnoreCase("n")) {
                 BasicUtils.exitApp("Crypter exited...");
+
             } else {
                 System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
                 BasicUtils.exitApp("Crypter exited...");
             }
+
         } else {
             md4();
         }
@@ -304,12 +330,15 @@ public class Hasher {
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
                 md5();
+
             } else if (ans.equalsIgnoreCase("n")) {
                 BasicUtils.exitApp("Crypter exited...");
+
             } else {
                 System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
                 BasicUtils.exitApp("Crypter exited...");
             }
+
         } else {
             md5();
         }
@@ -334,12 +363,15 @@ public class Hasher {
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
                 ntlm();
+
             } else if (ans.equalsIgnoreCase("n")) {
                 BasicUtils.exitApp("Crypter exited...");
+
             } else {
                 System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
                 BasicUtils.exitApp("Crypter exited...");
             }
+
         } else {
             ntlm();
         }
@@ -364,12 +396,15 @@ public class Hasher {
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
                 ripemd160();
+
             } else if (ans.equalsIgnoreCase("n")) {
                 BasicUtils.exitApp("Crypter exited...");
+
             } else {
                 System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
                 BasicUtils.exitApp("Crypter exited...");
             }
+
         } else {
             ripemd160();
         }
@@ -394,12 +429,15 @@ public class Hasher {
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
                 sha1();
+
             } else if (ans.equalsIgnoreCase("n")) {
                 BasicUtils.exitApp("Crypter exited...");
+
             } else {
                 System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
                 BasicUtils.exitApp("Crypter exited...");
             }
+
         } else {
             sha1();
         }
@@ -417,6 +455,7 @@ public class Hasher {
 
         if (value.isEmpty() || salt.isEmpty()) {
             sha256();
+
         } else {
             Main.consoleUtils.consoleLog(ConsoleColors.ANSI_BLUE + SHA256.createSHA256(value, salt));
 
@@ -429,8 +468,10 @@ public class Hasher {
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
                 sha256();
+
             } else if (ans.equalsIgnoreCase("n")) {
                 BasicUtils.exitApp("Crypter exited...");
+
             } else {
                 System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
                 BasicUtils.exitApp("Crypter exited...");
@@ -457,73 +498,17 @@ public class Hasher {
             //make action by input
             if (ans.equalsIgnoreCase("y")) {
                 whirlpool();
+
             } else if (ans.equalsIgnoreCase("n")) {
                 BasicUtils.exitApp("Crypter exited...");
+
             } else {
                 System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
                 BasicUtils.exitApp("Crypter exited...");
             }
+
         } else {
             whirlpool();
-        }
-    }
-
-
-
-    //becvoldCrypt encryption methode
-    public static void becvoldCrypt() {
-
-        //Set default process
-        String processString = "1";
-
-        //Print msg
-        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "1)" + ConsoleColors.ANSI_GREEN + "Encode     " + ConsoleColors.ANSI_YELLOW + "2)" + ConsoleColors.ANSI_GREEN + "Decode");
-        String process = Main.scanner.nextLine();
-
-        //Select encode or decode methode
-        if (process.equalsIgnoreCase("1")) {
-            processString = "1";
-        } else if (process.equalsIgnoreCase("2")) {
-            processString = "2";
-        } else {
-            becvoldCrypt();
-        }
-
-        //Print msg
-        Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Type your string...");
-
-        //Get string input
-        String stringValue = Main.scanner.nextLine();
-
-        //Check if string is empty
-        if (stringValue.isEmpty()) {
-            Main.consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Error your string is empty");
-            becvoldCrypt();
-        }
-
-        //Encode and decode string1
-        if (processString.equalsIgnoreCase("1")) {
-            Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Encoded string: " + Main.becvoldCrypt.encrypt(stringValue));
-            System.out.println(stringValue);
-        } else if (processString.equalsIgnoreCase("2")) {
-            Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Decoded string: " + Main.becvoldCrypt.decrypt(stringValue));
-            System.out.println(stringValue);
-        }
-
-        //Print msg
-        System.out.print(ConsoleColors.ANSI_GREEN + "You want to code another[Y]: ");
-
-        //Get ans
-        String ans = Main.scanner.nextLine();
-
-        //make action by input
-        if (ans.equalsIgnoreCase("y")) {
-            becvoldCrypt();
-        } else if (ans.equalsIgnoreCase("n")) {
-            BasicUtils.exitApp("Crypter exited...");
-        } else {
-            System.out.print(ConsoleColors.ANSI_RED + "Error " + ans + " is wrong value");
-            BasicUtils.exitApp("Crypter exited...");
         }
     }
 }
