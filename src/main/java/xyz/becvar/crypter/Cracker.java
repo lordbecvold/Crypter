@@ -79,74 +79,92 @@ public class Cracker {
 
                             if (algorithm.equalsIgnoreCase("1")) { //Bcrypt
                                 String hash = BCryptHash.createBcrypt(line, Integer.parseInt(cost));
-                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Bcrypt -> "+ ConsoleColors.ANSI_GREEN + hash);
+                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "[" + line + "]:Bcrypt -> "+ ConsoleColors.ANSI_GREEN + hash);
 
                                 if (hash.equalsIgnoreCase(hashToCrack)) {
                                     Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + line);
+                                    System.in.read();
+                                    System.exit(0);
                                 }
 
                             } else if (algorithm.equalsIgnoreCase("2")) { //CRC16
                                 String hash = CRC16.generateCRC16(line);
-                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "CRC16 -> "+ ConsoleColors.ANSI_GREEN + hash);
+                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "[" + line + "]:CRC16 -> "+ ConsoleColors.ANSI_GREEN + hash);
 
                                 if (hash.equalsIgnoreCase(hashToCrack)) {
-                                    Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + line);
+                                    Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "[" + line + "]:Plaintext from " + hashToCrack + " is " + line);
+                                    System.in.read();
+                                    System.exit(0);
                                 }
 
                             } else if (algorithm.equalsIgnoreCase("3")) { //MD4
                                 String hash = MD4.createMD4(line);
-                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "MD4 -> "+ ConsoleColors.ANSI_GREEN + hash);
+                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "[" + line + "]:MD4 -> "+ ConsoleColors.ANSI_GREEN + hash);
 
                                 if (hash.equalsIgnoreCase(hashToCrack)) {
                                     Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + line);
+                                    System.in.read();
+                                    System.exit(0);
                                 }
 
                             } else if (algorithm.equalsIgnoreCase("4")) { //MD5
                                 String hash = MD5.createMD5(line);
-                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "MD5 -> "+ ConsoleColors.ANSI_GREEN + hash);
+                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "[" + line + "]:MD5 -> "+ ConsoleColors.ANSI_GREEN + hash);
 
                                 if (hash.equalsIgnoreCase(hashToCrack)) {
                                     Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + line);
+                                    System.in.read();
+                                    System.exit(0);
                                 }
 
                             } else if (algorithm.equalsIgnoreCase("5")) { //NTLM
                                 String hash = NTLM.generateNTLM(line);
-                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "NTLM -> "+ ConsoleColors.ANSI_GREEN + hash);
+                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "[" + line + "]:NTLM -> "+ ConsoleColors.ANSI_GREEN + hash);
 
                                 if (hash.equalsIgnoreCase(hashToCrack)) {
                                     Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + line);
+                                    System.in.read();
+                                    System.exit(0);
                                 }
 
                             } else if (algorithm.equalsIgnoreCase("6")) { //RIPEMD160
                                 String hash = RIPEMD160.generateRIPME160(line);
-                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "RIPEMD160 -> "+ ConsoleColors.ANSI_GREEN + hash);
+                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "[" + line + "]:RIPEMD160 -> "+ ConsoleColors.ANSI_GREEN + hash);
 
                                 if (hash.equalsIgnoreCase(hashToCrack)) {
                                     Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + line);
+                                    System.in.read();
+                                    System.exit(0);
                                 }
 
                             } else if (algorithm.equalsIgnoreCase("7")) { //SHA1
                                 String hash = SHA1.createSHA1(line);
-                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "SHA1 -> "+ ConsoleColors.ANSI_GREEN + hash);
+                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "[" + line + "]:SHA1 -> "+ ConsoleColors.ANSI_GREEN + hash);
 
                                 if (hash.equalsIgnoreCase(hashToCrack)) {
                                     Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + line);
+                                    System.in.read();
+                                    System.exit(0);
                                 }
 
                             } else if (algorithm.equalsIgnoreCase("8")) { //SHA256
                                 String hash = SHA256.createSHA256(line, salt);
-                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "SHA256 -> "+ ConsoleColors.ANSI_GREEN + hash);
+                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "[" + line + "]:SHA256 -> "+ ConsoleColors.ANSI_GREEN + hash);
 
                                 if (hash.equalsIgnoreCase(hashToCrack)) {
                                     Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + line);
+                                    System.in.read();
+                                    System.exit(0);
                                 }
 
                             } else if (algorithm.equalsIgnoreCase("9")) { //Whirlpool
                                 String hash = Whirlpool.createWhirlpool(line);
-                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Whirlpool -> "+ ConsoleColors.ANSI_GREEN + hash);
+                                Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "[" + line + "]:Whirlpool -> "+ ConsoleColors.ANSI_GREEN + hash);
 
                                 if (hash.equalsIgnoreCase(hashToCrack)) {
                                     Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + line);
+                                    System.in.read();
+                                    System.exit(0);
                                 }
 
                             } else {
@@ -163,7 +181,7 @@ public class Cracker {
 
 
 
-    public static void randomGenerate() {
+    public static void randomGenerate() throws IOException {
 
         Main.consoleUtils.printEmptySpacer();
 
@@ -193,7 +211,7 @@ public class Cracker {
 
                 while (canCrack) {
 
-                    int cost = ThreadLocalRandom.current().nextInt(5, 20);
+                    int cost = 13;
 
                     String random = BasicUtils.genrateString();
 
@@ -204,6 +222,8 @@ public class Cracker {
                     if (hashToCrack.equalsIgnoreCase(hash)) {
                         canCrack = false;
                         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                        System.in.read();
+                        System.exit(0);
                     }
                 }
 
@@ -218,6 +238,8 @@ public class Cracker {
                 if (hashToCrack.equalsIgnoreCase(hash)) {
                     canCrack = false;
                     Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                    System.in.read();
+                    System.exit(0);
                 }
 
             } else if (algorithm.equalsIgnoreCase("3")) {
@@ -231,6 +253,8 @@ public class Cracker {
                 if (hashToCrack.equalsIgnoreCase(hash)) {
                     canCrack = false;
                     Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                    System.in.read();
+                    System.exit(0);
                 }
             } else if (algorithm.equalsIgnoreCase("4")) {
 
@@ -244,6 +268,8 @@ public class Cracker {
                     if (hashToCrack.equalsIgnoreCase(hash)) {
                         canCrack = false;
                         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                        System.in.read();
+                        System.exit(0);
                     }
                 }
 
@@ -259,6 +285,8 @@ public class Cracker {
                     if (hashToCrack.equalsIgnoreCase(hash)) {
                         canCrack = false;
                         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                        System.in.read();
+                        System.exit(0);
                     }
                 }
 
@@ -274,6 +302,8 @@ public class Cracker {
                     if (hashToCrack.equalsIgnoreCase(hash)) {
                         canCrack = false;
                         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                        System.in.read();
+                        System.exit(0);
                     }
                 }
 
@@ -289,6 +319,8 @@ public class Cracker {
                     if (hashToCrack.equalsIgnoreCase(hash)) {
                         canCrack = false;
                         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                        System.in.read();
+                        System.exit(0);
                     }
                 }
 
@@ -305,6 +337,8 @@ public class Cracker {
                     if (hashToCrack.equalsIgnoreCase(hash)) {
                         canCrack = false;
                         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                        System.in.read();
+                        System.exit(0);
                     }
                 }
 
@@ -320,6 +354,8 @@ public class Cracker {
                     if (hashToCrack.equalsIgnoreCase(hash)) {
                         canCrack = false;
                         Main.consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Plaintext from " + hashToCrack + " is " + random);
+                        System.in.read();
+                        System.exit(0);
                     }
                 }
             }

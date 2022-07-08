@@ -3,6 +3,8 @@ package xyz.becvar.crypter;
 import xyz.becvar.crypter.utils.BasicUtils;
 import xyz.becvar.crypter.utils.console.ConsoleColors;
 import xyz.becvar.crypter.utils.console.ConsoleUtils;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -12,7 +14,7 @@ public class Main {
     public static Main main = new Main();
     public static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //Clear console after start app
         consoleUtils.clearConsole();
 
@@ -21,7 +23,7 @@ public class Main {
     }
 
 
-    public void printMain() {
+    public void printMain() throws IOException {
 
         //Print menu
         consoleUtils.printSpacer();
@@ -52,7 +54,7 @@ public class Main {
 
 
     //Print error msg and main menu
-    public void printInvalidMSG() {
+    public void printInvalidMSG() throws IOException {
         consoleUtils.printLongSpacer();
         consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Error your algorithm value is not valid!");
         consoleUtils.consoleLog(ConsoleColors.ANSI_RED + "Please select algorithm integer...\n");
@@ -61,7 +63,7 @@ public class Main {
 
 
     //Set function by algorithm
-    public void selectAlgorithm(String algorithm) {
+    public void selectAlgorithm(String algorithm) throws IOException {
         if (algorithm.equals("0")) { //Open cracker gui
             crackerInit();
 
@@ -108,7 +110,7 @@ public class Main {
 
 
     //Init cracker tool
-    public static void crackerInit() {
+    public static void crackerInit() throws IOException {
         consoleUtils.printEmptySpacer();
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "Please select cracking type");
         consoleUtils.consoleLog(ConsoleColors.ANSI_YELLOW + "1)" + ConsoleColors.ANSI_GREEN + "Brute-force     " + ConsoleColors.ANSI_YELLOW + "2)" + ConsoleColors.ANSI_GREEN + "Random");
